@@ -1,8 +1,8 @@
 'use client'
+import Link from 'next/link';
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Login from './page';
-import Link from 'next/link';
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -12,6 +12,10 @@ const Navbar = () => {
     {
       id: "home",
       title: "Home",
+    },
+    {
+      id: 'Scrims',
+      title: "About",
     },
     {
       id: "live",
@@ -24,18 +28,16 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full flex py-6 justify-between items-center">
-      {/* Logo */}
+    <nav className="w-full flex px-2 py-1 justify-between items-center fixed top-0 z-10 bg-black shadow-sm shadow-gray-900">
       <Link href="/">
         <img src="../logo.png" alt="MOONLIT" className="w-[80px] h-[80px]" />
       </Link>
 
-      {/* Navigation Links */}
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-[16px] ${
+            className={`font-poppins font-semibold cursor-pointer text-[16px] ${
               active === nav.title ? "text-white" : "text-dimWhite"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.title)}
@@ -46,13 +48,11 @@ const Navbar = () => {
           </li>
         ))}
 
-        {/* Link to open Login form */}
-        <li className="ml-6 cursor-pointer font-poppins font-normal text-[16px] text-white bg-violet-500 px-4 py-1 rounded-md" onClick={() => setToggle(!toggle)}>
+        <li className="ml-6 cursor-pointer font-poppins font-semibold text-[16px] text-white bg-violet-500 px-4 py-1 rounded-md" onClick={() => setToggle(!toggle)}>
           Login
         </li>
       </ul>
 
-      {/* Login form */}
       {toggle && (
         <div>
           <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"></div>
@@ -64,7 +64,6 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Hamburger menu icon */}
       <div className="sm:hidden flex flex-1 justify-end items-center">
         {toggle ? (
           <FaTimes
