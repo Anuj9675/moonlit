@@ -1,9 +1,8 @@
-"use client"
-import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import Link from 'next/link';
+'use client'
+import { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -26,12 +25,12 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex py-6 justify-between items-center">
+      {/* Logo */}
       <Link href="/">
-        
-          <img src="../logo.png" alt="MOONLIT" className="w-[80px] h-[80px]" />
-      
+        <img src="../logo.png" alt="MOONLIT" className="w-[80px] h-[80px]" />
       </Link>
 
+      {/* Navigation Links */}
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
           <li
@@ -47,28 +46,25 @@ const Navbar = () => {
           </li>
         ))}
 
-        {/* Link to open Login and Signup forms */}
+        {/* Link to open Login form */}
         <li className="ml-6 cursor-pointer font-poppins font-normal text-[16px] text-white bg-violet-500 p-1 rounded-md" onClick={() => setToggle(!toggle)}>
-           
-            Login/Signup
-          
+          Login
         </li>
       </ul>
 
-      {/* Login and Signup forms */}
+      {/* Login form */}
       {toggle && (
         <div>
           <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"></div>
           <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
             <div className="p-8 bg-white rounded-md shadow-md">
               <LoginForm />
-              <hr className="my-4" />
-              <SignupForm />
             </div>
           </div>
         </div>
       )}
 
+      {/* Hamburger menu icon */}
       <div className="sm:hidden flex flex-1 justify-end items-center">
         {toggle ? (
           <FaTimes
