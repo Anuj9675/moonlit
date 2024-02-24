@@ -1,0 +1,24 @@
+import React, { useState } from 'react';
+import AnimatedLayout from './pages/AnimatedLayout';
+import LoginForm from './pages/LoginForm';
+import SignupForm from './pages/SignupForm';
+
+const login = () => {
+  const [isLoginForm, setIsLoginForm] = useState(true);
+
+  const switchForm = (isLogin) => {
+    setIsLoginForm(isLogin);
+  };
+
+  return (
+    <AnimatedLayout isLoginForm={isLoginForm} switchForm={switchForm}>
+      {isLoginForm ? (
+        <LoginForm switchToSignup={() => switchForm(false)} />
+      ) : (
+        <SignupForm switchToLogin={() => switchForm(true)} />
+      )}
+    </AnimatedLayout>
+  );
+};
+
+export default login;

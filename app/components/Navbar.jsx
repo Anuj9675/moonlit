@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import LoginForm from './LoginForm';
+import Login from './page';
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -47,7 +47,7 @@ const Navbar = () => {
         ))}
 
         {/* Link to open Login form */}
-        <li className="ml-6 cursor-pointer font-poppins font-normal text-[16px] text-white bg-violet-500 p-1 rounded-md" onClick={() => setToggle(!toggle)}>
+        <li className="ml-6 cursor-pointer font-poppins font-normal text-[16px] text-white bg-violet-500 px-4 py-1 rounded-md" onClick={() => setToggle(!toggle)}>
           Login
         </li>
       </ul>
@@ -58,7 +58,7 @@ const Navbar = () => {
           <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"></div>
           <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
             <div className="p-8 bg-white rounded-md shadow-md">
-              <LoginForm />
+              <Login />
             </div>
           </div>
         </div>
