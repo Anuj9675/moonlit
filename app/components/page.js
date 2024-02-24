@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import AnimatedLayout from './pages/AnimatedLayout';
 import LoginForm from './pages/LoginForm';
 import SignupForm from './pages/SignupForm';
+import AnimatedLayout from './pages/AnimatedLayout';
 
 const login = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);

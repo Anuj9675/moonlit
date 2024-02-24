@@ -1,5 +1,5 @@
 import styles from "./style";
-import { Billing, CardDeal, Footer, Navbar, Hero, Register } from "./components";
+import { Billing, Footer, Navbar, Hero, Register } from "./components";
 import ScrollUpButton from "./components/ScrollUpButton";
 
 
@@ -20,7 +20,6 @@ export default function Home() {
       <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}` }>
         <div className={`${styles.boxWidth}`}>
           <Billing />
-          <CardDeal />
         </div>
       </div>
 
