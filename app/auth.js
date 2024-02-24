@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { appwrite } from 'appwrite';
 
 export const useAuth = () => {
@@ -8,17 +8,29 @@ export const useAuth = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    let isMounted = true; // Flag to track component mounting
+
     const checkAuth = async () => {
       try {
         const { data } = await appwrite.account.get();
-        setUser(data);
+
+        // Update state only if the component is still mounted
+        if (isMounted) {
+          setUser(data);
+        }
       } catch (error) {
+        // Handle errors
         setUser(null);
       }
     };
 
     checkAuth();
-  }, []);
+
+    // Cleanup function to set isMounted to false when component unmounts
+    return () => {
+      isMounted = false;
+    };
+  }, []); // Empty dependency array ensures this effect runs only once during mount
 
   const login = async (email, password) => {
     try {
